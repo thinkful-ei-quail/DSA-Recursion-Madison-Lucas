@@ -1,15 +1,27 @@
+'use strict';
+
 // NUMBER 1
 
-// Write a recursive function that counts how many sheep jump over the fence.
-// Your program should take a number as input.
-// That number should be the number of sheep you have.
-// The function should display the number along with the message
-//  "Another sheep jumps over the fence" until no more sheep are left.
+function sheepJump (numSheep) {
+  // base case
+  if (numSheep === 0) {
+    console.log('All sheep jumped over the fence!');
+    return;
+  }
 
-// Input: 3
+  // general case
+  console.log(`${numSheep}: Another sheep jumps over the fence...`);
+  sheepJump(numSheep - 1);
+}
 
-// Output:
-// 3: Another sheep jumps over the fence
-// 2: Another sheep jumps over the fence
-// 1: Another sheep jumps over the fence
-// All sheep jumped over the fence
+// NUMBER 2
+
+
+
+/* * * TESTING ZONE * * */
+
+// exercise 1
+
+sheepJump(3);
+
+// exercise 2
