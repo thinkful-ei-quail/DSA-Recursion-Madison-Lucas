@@ -32,6 +32,16 @@ function exponentCalculator (base, exponent) {
   return base * exponentCalculator(base, exponent - 1);
 }
 
+
+// NUMBER 3
+
+function reversedString(string) {
+  if(string.length === 0) {
+    return string;
+  }
+  return string[string.length -1] + reversedString(string.slice(0, string.length -1));
+}
+
 // NUMBER 4
 
 function nthTriangular (n) {
@@ -45,13 +55,20 @@ function nthTriangular (n) {
 // NUMBER 5
 
 function splitString (string, splitter) {
-  if (string.indexOf(splitter) === -1) {
-    return [];
+  const index = string.indexOf(splitter)
+  if(index === -1){
+    return [string]
   }
+  return [string.slice(0, index), ...splitString(string.slice(index +1), splitter)]
+}
 
-  const splittedString = splitString(string.slice(string.indexOf(splitter) + 1, string.length));
-  splittedString.push(string.slice(0, string.indexOf(splitter)));
-  return splittedString;
+// NUMBER 6
+
+function fibbedNum(number) {
+  if(number == 0 || number == 1) {
+    return number;
+  }
+  return fibbedNum(number -1) + fibbedNum(number -2);
 }
 
 
@@ -71,13 +88,7 @@ console.log(reversedString('food'));
 console.log(nthTriangular(9));
 
 // exercise 5
-console.log(splitString('78*63*2434234*gator', '*'));
+console.log(splitString('02/20/2020', '/'));
 
-// NUMBER 3
-
-function reversedString(string) {
-  if(string.length === 0) {
-    return string;
-  }
-  return string[string.length -1] + reversedString(string.slice(0, string.length -1));
-}
+//exercise 6
+console.log(fibbedNum(6));
