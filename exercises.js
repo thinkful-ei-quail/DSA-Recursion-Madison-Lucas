@@ -32,6 +32,28 @@ function exponentCalculator (base, exponent) {
   return base * exponentCalculator(base, exponent - 1);
 }
 
+// NUMBER 4
+
+function nthTriangular (n) {
+  if (n === 1) {
+    return n;
+  }
+
+  return n + nthTriangular(n - 1);
+}
+
+// NUMBER 5
+
+function splitString (string, splitter) {
+  if (string.indexOf(splitter) === -1) {
+    return [];
+  }
+
+  const splittedString = splitString(string.slice(string.indexOf(splitter) + 1, string.length));
+  splittedString.push(string.slice(0, string.indexOf(splitter)));
+  return splittedString;
+}
+
 
 
 /* * * TESTING ZONE * * */
@@ -44,6 +66,12 @@ console.log(exponentCalculator(5, 4));
 
 // exercise 3
 console.log(reversedString('food'));
+
+// exercise 4
+console.log(nthTriangular(9));
+
+// exercise 5
+console.log(splitString('78*63*2434234*gator', '*'));
 
 // NUMBER 3
 
