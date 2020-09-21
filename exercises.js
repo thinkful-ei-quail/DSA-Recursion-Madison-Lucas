@@ -41,3 +41,15 @@ sheepJump(3);
 
 // exercise 2
 console.log(exponentCalculator(5, 4));
+
+// exercise 3
+console.log(reversedString('food'));
+
+// NUMBER 3
+
+function reversedString(string) {
+  if(string.length === 0) {
+    return string;
+  }
+  return string[string.length -1] + reversedString(string.slice(0, string.length -1));
+}
