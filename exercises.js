@@ -71,7 +71,79 @@ function fibbedNum(number) {
   return fibbedNum(number -1) + fibbedNum(number -2);
 }
 
+// NUMBER 7
 
+function factorialFinder(number) {
+  if (number === 1) {
+    return number;
+  }
+  return number * factorialFinder(number - 1);
+}
+
+// NUMBER 8
+
+let mySmallMaze = [
+  [' ', ' ', ' '],
+  [' ', '*', ' '],
+  [' ', ' ', 'e']
+];
+
+let maze = [
+  [' ', ' ', ' ', '*', ' ', ' ', ' '],
+  ['*', '*', ' ', '*', ' ', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', '*', ' '],
+  [' ', '*', '*', '*', '*', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+];
+
+function findPath(maze, columnIndex, rowIndex, trapped) {
+  console.log(rowIndex + ',' + columnIndex);
+  
+  if(maze[rowIndex][columnIndex] === 'e') {
+    return '';
+  }
+
+  if(columnIndex + 1 === maze[0].length) {
+    return 'D' + findPath(maze, columnIndex, rowIndex + 1, false);
+  }
+
+  if(rowIndex + 1 === maze.length) {
+    return 'R' + findPath(maze, columnIndex, rowIndex + 1, false);
+  }
+
+  let rightSpace = maze[rowIndex][columnIndex + 1];
+  let downSpace = maze[rowIndex + 1][columnIndex];
+
+  if(trapped) {
+    if (downSpace === '*') {
+      return 'L' + findPath(maze, columnIndex - 1, rowIndex, true);
+    } else if (downSpace === ' ') {
+      return 'D' + findPath(maze, columnIndex, rowIndex + 1, false);
+    }
+  }
+
+  if(rightSpace === ' ') {
+    return 'R' + findPath(maze, columnIndex + 1, rowIndex, false);
+  } else if (rightSpace === '*') {
+    if (downSpace === '*') {
+      console.log('went left!');
+      return 'L' + findPath(maze, columnIndex - 1, rowIndex, true);
+    }
+    return 'D' + findPath(maze, columnIndex, rowIndex + 1, false);
+  }
+
+  // switch(maze[rowIndex][columnIndex + 1]) {
+  // case ' ':
+  //   return 'R' + findPath(maze, columnIndex + 1, rowIndex);
+  // case '*':
+  //   return 'D' + findPath(maze, columnIndex, rowIndex + 1);
+  // case 'e':
+  //   return 'R' + findPath(maze, columnIndex + 1, rowIndex);
+  // default:
+  //   console.log('something has gone terribly wrong the world is on fire life is pain');
+  //   break;
+  // }
+}
 
 /* * * TESTING ZONE * * */
 
@@ -92,3 +164,10 @@ console.log(splitString('02/20/2020', '/'));
 
 //exercise 6
 console.log(fibbedNum(6));
+
+// exercise 7
+console.log(factorialFinder(6));
+
+// exercise 8
+console.log(findPath(mySmallMaze, 0, 0, false));
+console.log(findPath(maze, 0, 0, false));
