@@ -14,14 +14,30 @@ function sheepJump (numSheep) {
   sheepJump(numSheep - 1);
 }
 
+
 // NUMBER 2
+
+function exponentCalculator (base, exponent) {
+  // error case
+  if (exponent < 0) {
+    return 'exponent should be >= 0';
+  }
+
+  // base case
+  if (exponent === 0) {
+    return 1;
+  }
+
+  // general case
+  return base * exponentCalculator(base, exponent - 1);
+}
 
 
 
 /* * * TESTING ZONE * * */
 
 // exercise 1
-
 sheepJump(3);
 
 // exercise 2
+console.log(exponentCalculator(5, 4));
